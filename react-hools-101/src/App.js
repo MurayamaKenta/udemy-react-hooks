@@ -1,53 +1,37 @@
 import React , { useState  } from 'react';
 
 
-const App = () => {
-  const [count, setCount] = useState(10)
+const App = (props) => {
+  //useStateに初期値を登録する
+  const [name, setName] = useState(props.name)
+  const [price, setPrice] = useState(props.price)
 
-  const inc = () => {
-    return setCount(count + 1)
+  const reset = (e) => {
+    setPrice(props.price)
+    setName(props.name)
   }
-  //一行の場合はreturn不要で書くことができる
-  const dec = () => setCount(count - 1)
-
-  //setCountの引数には関数を書くことができる
-  //またその関数の引数には現在の状態を持つことができる(previousCount には countが入っていることになる
-  const inc02 = () => setCount(previousCount => previousCount + 2)
-  const dec02 = () => setCount(previousCount => previousCount - 2)
-
-  const reset = () => setCount(10)
-
-  const double = () => setCount(previousCount => previousCount * 2)
-  // const double = () => setCount(count * 2)
-
-  /**
-   * 3の倍数の時のみ割算をする。それ以外はそのままの数字表示
-   */
-  const divide3 = () => setCount(previousCount => {
-    return previousCount % 3 === 0 ? previousCount / 3 : previousCount
-  })
-
+  const changeName = (e) => {
+    setName(e.target.value)
+  }
 
   return (
     <>
-      <h1>count : {count}</h1>
-      <button onClick={inc}>+1</button>
-      <button onClick={dec}>-1</button>
+      <p>現在の{name}の値段は{price}です。</p>
+      <button onClick={() => { setPrice(price + 1 )}}> +1 </button>
+      <button onClick={() => { setPrice(price - 1 )}}> -1 </button>
+      {/* <button onClick={() => { setPrice(props.price) }}> Reset </button> */}
+      <button onClick={ reset }> Reset </button>
       <div>
-        <button onClick={inc02}>+2</button>
-        <button onClick={dec02}>-2</button>
-      </div>
-      <div>
-        <button onClick={reset}>Reset</button>
-      </div>
-      <div>
-        <button onClick={double}>×2</button>
-      </div>
-      <div>
-        <button onClick={divide3}>3の倍数の時だけ割る</button>
+        <input type="text" value={name} onChange={changeName} placeholder='入力してください' />
       </div>
     </>
   );
+}
+
+//外部から初期値を受け取る場合
+App.defaultProps = {
+  name: '〇〇',
+  price: 100
 }
 
 export default App;
