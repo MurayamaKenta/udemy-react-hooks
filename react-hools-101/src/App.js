@@ -3,24 +3,24 @@ import React , { useState  } from 'react';
 
 const App = (props) => {
   //useStateに初期値を登録する
-  const [name, setName] = useState(props.name)
-  const [price, setPrice] = useState(props.price)
+  const [state, setState] = useState(props)
+  const {name , price} = state
+  // const [name, setName] = useState(props.name)
+  // const [price, setPrice] = useState(props.price)
 
-  const reset = (e) => {
-    setPrice(props.price)
-    setName(props.name)
-  }
+
   const changeName = (e) => {
-    setName(e.target.value)
+    // setState(e.target.value)
+    setState({...state, name: e.target.value})
   }
 
   return (
     <>
       <p>現在の{name}の値段は{price}です。</p>
-      <button onClick={() => { setPrice(price + 1 )}}> +1 </button>
-      <button onClick={() => { setPrice(price - 1 )}}> -1 </button>
+      <button onClick={() => { setState({...state, price: price + 1} )}}> +1 </button>
+      <button onClick={() => { setState({...state, price: price - 1 } )}}> -1 </button>
       {/* <button onClick={() => { setPrice(props.price) }}> Reset </button> */}
-      <button onClick={ reset }> Reset </button>
+      <button onClick={() => setState(props) }> Reset </button>
       <div>
         <input type="text" value={name} onChange={changeName} placeholder='入力してください' />
       </div>
