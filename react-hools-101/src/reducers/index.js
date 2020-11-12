@@ -21,7 +21,7 @@ const events = (state = [], action) => {
       //filter条件にマッチしたものだけ配列の中から抽出する
       //今回の場合はaction.idとマッチしないものだけ抽出している（結果的にマッチしたものを表示しないので削除したことになる）
       return state.filter(event => event.id !== action.id )
-    case 'DELETE_ALL_EVENT':
+    case 'DELETE_ALL_EVENTS':
       return []
     default:
       return state
