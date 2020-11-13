@@ -3,20 +3,23 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import reducer from '../reducers';
 import EventForm from './EventForm';
 import Events from './Events';
+import AppContext from '../contexts/AppContext'
 
+
+console.log({AppContext});
 const App = () => {
   const [state, dispatch] = useReducer(reducer, [])
 
 
   return (
     <>
-      <div className="container-fluid">
-        <h4>イベント作成フォーム</h4>
-        {/* <Provider state={state} dispatch={ dispatch }> */}
-        <EventForm state={state} dispatch={ dispatch }/>
-        <Events state={state} dispatch={dispatch} />
-        {/* </Provider> */}
-      </div>
+      <AppContext.Provider value={ 'kenta' }>
+        <div className="container-fluid">
+          <h4>イベント作成フォーム</h4>
+          <EventForm state={state} dispatch={dispatch} />
+          <Events state={state} dispatch={dispatch} />
+        </div>
+      </AppContext.Provider>
     </>
   );
 }
