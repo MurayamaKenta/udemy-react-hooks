@@ -5,19 +5,16 @@ import EventForm from './EventForm';
 import Events from './Events';
 import AppContext from '../contexts/AppContext'
 
-
-console.log({AppContext});
 const App = () => {
   const [state, dispatch] = useReducer(reducer, [])
 
-
   return (
     <>
-      <AppContext.Provider value={ 'kenta' }>
+      <AppContext.Provider value={{state , dispatch}}>
         <div className="container-fluid">
           <h4>イベント作成フォーム</h4>
-          <EventForm state={state} dispatch={dispatch} />
-          <Events state={state} dispatch={dispatch} />
+          <EventForm  />
+          <Events  />
         </div>
       </AppContext.Provider>
     </>
