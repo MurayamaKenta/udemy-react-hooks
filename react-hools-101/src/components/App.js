@@ -1,13 +1,15 @@
 import React, { useReducer }from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
- import reducer from '../reducers';
+import reducer from '../reducers';
 import EventForm from './EventForm';
 import Events from './Events';
+import OperationLogs from './OperationLogs'
 import AppContext from '../contexts/AppContext'
 
 const App = () => {
   const initialState = {
-    events:[],
+    events: [],
+    operationLogs:[]
   }
   const [state, dispatch] = useReducer(reducer,initialState )
 
@@ -20,6 +22,7 @@ const App = () => {
           <Events  />
         </div>
       </AppContext.Provider>
+      {/* <OperationLogs /> */}
     </>
   );
 }
