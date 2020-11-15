@@ -12,7 +12,6 @@ const App = () => {
     operationLogs:[]
   }
   const [state, dispatch] = useReducer(reducer,initialState )
-
   return (
     <>
       <AppContext.Provider value={{state , dispatch}}>
