@@ -8,7 +8,6 @@ const EventForm = () => {
   const [body, setBody] = useState('')
   const { state, dispatch } = useContext(AppContext)
 
-  console.log(state);
 
 
   const addEvent = (e) => {
