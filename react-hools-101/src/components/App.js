@@ -9,7 +9,7 @@ import AppContext from '../contexts/AppContext'
 const App = () => {
   const initialState = {
     events: [],
-    operationLogs:[]
+    operationLogs: []
   }
   const [state, dispatch] = useReducer(reducer,initialState )
   return (
@@ -18,10 +18,10 @@ const App = () => {
         <div className="container-fluid">
           <h4>イベント作成フォーム</h4>
           <EventForm  />
-          <Events  />
+          <Events />
+          <OperationLogs />
         </div>
       </AppContext.Provider>
-      {/* <OperationLogs /> */}
     </>
   );
 }
